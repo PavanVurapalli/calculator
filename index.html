@@ -119,7 +119,7 @@
     <button class="lo" onclick="run('0')">0</button>
     <button onclick="run('.')">.</button>
     <button class="num" onclick="run('+')">+</button>
-    <button class="num vo" onclick="result()">=</button>
+    <button class="num vo" onclick="result()" id="disa">=</button>
   </div>
 
   <script>
@@ -158,14 +158,12 @@
       try{
         k=document.getElementById('res').innerHTML;
         k=k.replaceAll('÷','/').replaceAll('x','*').replaceAll('%','/100');
-        k=eval(k);
-        res.innerHTML=k;
+        let ans=eval(k);
+        res.innerHTML=k+'='+ans;
         res.style.color='green';
+        k=ans;
       }
-      catch(error){
-        res.innerHTML='Error';
-        res.style.color='red';
-      }
+      catch(error){}
       bool=true;
     }
 
@@ -179,18 +177,32 @@
     function sqr()
     {
       k=Math.pow(k,2);
-      if(isNaN(k)) res.style.color='red';
-      res.innerHTML=k;
-      res.style.color='green';
+      if(isNaN(k))
+      {
+        res.innerHTML=k;
+        res.style.color='red';
+      } 
+      else
+      {
+        res.innerHTML=k;
+        res.style.color='green';
+      }
       bool=true;
     }
 
     function sqrt()
     {
       k=Math.sqrt(k);
-      if(isNaN(k)) res.style.color='red';
-      res.innerHTML=k;
-      res.style.color='green';
+      if(isNaN(k))
+      {
+        res.innerHTML=k;
+        res.style.color='red';
+      }
+      else
+      {
+        res.innerHTML=k;
+        res.style.color='green';
+      }
       bool=true;
     }
 
