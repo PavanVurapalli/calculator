@@ -142,7 +142,7 @@
     function run(n)
     {
       res.style.color='#1e1e1e';
-      if(res.innerHTML=='Error' || res.innerHTML=="NaN" || (!/[\(\)\x÷\-\+\%]/.test(n) && bool))
+      if(res.innerHTML=='Error' || res.innerHTML=="NaN" || (!/[\(\)\x÷\-\+\%/]/.test(n) && bool))
       {
         res.innerHTML='';
         k='';
@@ -219,8 +219,6 @@
       if(k.length==0) res.innerHTML='0';
       else res.innerHTML=k;
     }
-
-    console.log(k)
   </script>
 </body>
 </html>
