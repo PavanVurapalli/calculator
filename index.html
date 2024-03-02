@@ -126,6 +126,19 @@
     let k='';
     let bool=false;
     let res=document.getElementById('res');
+
+    document.addEventListener('keydown',keyboard)
+    function keyboard(o)
+    {
+      let val=o.key;
+      if(/[0-9.()+\-/%]/.test(val)) run(val);
+      else if(val=='*') run('x');
+      else if(val=='Enter') result();
+      else if(val=='Backspace') back();
+      else if(val=='Delete') cls();
+    }
+
+
     function run(n)
     {
       res.style.color='#1e1e1e';
@@ -135,7 +148,6 @@
         k='';
       }
       if(n=='(' && k.length>=1) k+='x'+n;
-      else if(n=='%') k+='/100';
       else k+=n;
       res.innerHTML=k;
       bool=false;
@@ -144,7 +156,8 @@
     function result()
     {
       try{
-        k=k.replaceAll('÷','/').replaceAll('x','*');
+        k=document.getElementById('res').innerHTML;
+        k=k.replaceAll('÷','/').replaceAll('x','*').replaceAll('%','/100');
         k=eval(k);
         res.innerHTML=k;
         res.style.color='green';
@@ -194,6 +207,8 @@
       if(k.length==0) res.innerHTML='0';
       else res.innerHTML=k;
     }
+
+    console.log(k)
   </script>
 </body>
 </html>
